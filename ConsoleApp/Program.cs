@@ -44,7 +44,7 @@ namespace KoenZomers.UniFi.Api.ConsoleApp
 
             // Retrieve the UniFi devices
             Console.WriteLine("- Getting devices");
-            var devices = await uniFiApi.GetDevices();
+            var devices = await uniFiApi.GetDevicesOfType<Responses.UniFiSecurityGateway3P>();
 
             foreach (var device in devices)
             {

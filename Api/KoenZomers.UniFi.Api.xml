@@ -83,6 +83,12 @@
             </summary>
             <returns>List with all UniFi devices</returns>
         </member>
+        <member name="M:KoenZomers.UniFi.Api.Api.GetDevicesOfType``1">
+            <summary>
+            Gets a list with all UniFi of the specified type
+            </summary>
+            <returns>List with all UniFi devices</returns>
+        </member>
         <member name="M:KoenZomers.UniFi.Api.Api.GetSites">
             <summary>
             Gets all sites registered with UniFi
@@ -152,6 +158,16 @@
             Logs out from the UniFi Controller
             </summary>
             <returns>True if logout was successful or False if it failed</returns>
+        </member>
+        <member name="T:KoenZomers.UniFi.Api.Constants.DeviceModelCodes">
+            <summary>
+            List of all the UniFi device model codes
+            </summary>
+        </member>
+        <member name="T:KoenZomers.UniFi.Api.Constants.DeviceTypeCodes">
+            <summary>
+            List of all the UniFi device model codes
+            </summary>
         </member>
         <member name="T:KoenZomers.UniFi.Api.CookieUtility">
             <summary>
@@ -475,6 +491,16 @@
             Details of a UniFi device such as an access point or switch
             </summary>
         </member>
+        <member name="P:KoenZomers.UniFi.Api.Responses.Device.ExpectedTypeCode">
+            <summary>
+            UniFi code that identifies the device type
+            </summary>
+        </member>
+        <member name="P:KoenZomers.UniFi.Api.Responses.Device.ExpectedModelCode">
+            <summary>
+            UniFi code that identifies the model of the device
+            </summary>
+        </member>
         <member name="P:KoenZomers.UniFi.Api.Responses.Device.Name">
             <summary>
             Name of the device
@@ -534,6 +560,23 @@
             <summary>
             Unique device ID
             </summary>
+        </member>
+        <member name="P:KoenZomers.UniFi.Api.Responses.Device.FirmwareVersion">
+            <summary>
+            Device Version
+            </summary>
+        </member>
+        <member name="M:KoenZomers.UniFi.Api.Responses.Device.IsCorrectType">
+            <summary>
+            Determine if the type code supplied applies to this object type
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KoenZomers.UniFi.Api.Responses.Device.IsCorrectModel">
+            <summary>
+            Determine if the model code supplied applies to this object type
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:KoenZomers.UniFi.Api.Responses.Meta">
             <summary>
@@ -595,6 +638,48 @@
             <summary>
             Role of the site? Seems to be admin in my testable scenarios.
             </summary>
+        </member>
+        <member name="T:KoenZomers.UniFi.Api.Responses.UniFiSecurityGateway3P">
+            <summary>
+            Details of a UniFi device such as an access point or switch
+            </summary>
+        </member>
+        <member name="P:KoenZomers.UniFi.Api.Responses.UniFiSecurityGateway3P.ExpectedTypeCode">
+            <summary>
+            UniFi code that identifies the device type
+            </summary>
+        </member>
+        <member name="P:KoenZomers.UniFi.Api.Responses.UniFiSecurityGateway3P.ExpectedModelCode">
+            <summary>
+            UniFi code that identifies the model of the device
+            </summary>
+        </member>
+        <member name="P:KoenZomers.UniFi.Api.Responses.UniFiSecurityGateway3P.UpTime">
+            <summary>
+            The amount of time (in seconds) that the device has been turned on
+            </summary>
+        </member>
+        <member name="P:KoenZomers.UniFi.Api.Responses.UniFiSecurityGateway3P.WanInterface1">
+            <summary>
+            Detailed object of the WAN 1 interface
+            </summary>
+        </member>
+        <member name="P:KoenZomers.UniFi.Api.Responses.UniFiSecurityGateway3P.WanInterface2">
+            <summary>
+            Detailed object of the WAN 2 interface
+            </summary>
+        </member>
+        <member name="M:KoenZomers.UniFi.Api.Responses.UniFiSecurityGateway3P.IsCorrectType">
+            <summary>
+            Determine if the type code supplied applies to this object type
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KoenZomers.UniFi.Api.Responses.UniFiSecurityGateway3P.IsCorrectModel">
+            <summary>
+            Determine if the model code supplied applies to this object type
+            </summary>
+            <returns></returns>
         </member>
     </members>
 </doc>

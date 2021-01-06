@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -52,7 +53,7 @@ namespace KoenZomers.UniFi.Api
         /// </summary>
         /// <param name="baseUri">BaseUri of the UniFi Controller, i.e. https://192.168.0.1:8443</param>
         public Api(Uri baseUri) : this(baseUri, null)
-        {            
+        {
         }
 
         /// <summary>
@@ -141,13 +142,21 @@ namespace KoenZomers.UniFi.Api
         /// Gets a list with all UniFi devices
         /// </summary>
         /// <returns>List with all UniFi devices</returns>
-        public async Task<List<Responses.Device>> GetDevices()
+        public async Task<List<Responses.Device>> GetDevices() => await GetDevicesOfType<Responses.Device>();
+
+        /// <summary>
+        /// Gets a list with all UniFi of the specified type
+        /// </summary>
+        /// <returns>List with all UniFi devices</returns>
+        public async Task<List<T>> GetDevicesOfType<T>()
+            where T : Responses.Device
         {
             var clientsUri = new Uri(BaseUri, $"/api/s/{SiteId}/stat/device");
             var resultString = await HttpUtility.GetRequestResult(clientsUri, _cookieContainer, ConnectionTimeout);
-            var resultJson = JsonConvert.DeserializeObject<Responses.ResponseEnvelope<Responses.Device>>(resultString);
+            var resultJson = JsonConvert.DeserializeObject<Responses.ResponseEnvelope<T>>(resultString);
+            var filteredData = resultJson.data.Where(x => x.IsCorrectType());
 
-            return resultJson.data;
+            return filteredData.ToList();
         }
 
         /// <summary>

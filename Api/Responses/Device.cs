@@ -9,6 +9,11 @@ namespace KoenZomers.UniFi.Api.Responses
     public class Device : BaseResponse
     {
         /// <summary>
+        /// UniFi code that identifies the device type
+        /// </summary>
+        public virtual string ExpectedTypeCode { get => Constants.DeviceTypeCodes.Unspecified; }
+
+        /// <summary>
         /// Name of the device
         /// </summary>
         [JsonProperty(PropertyName = "name")]
@@ -77,5 +82,29 @@ namespace KoenZomers.UniFi.Api.Responses
         /// </summary>
         [JsonProperty(PropertyName = "_id")]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Device Version
+        /// </summary>
+        [JsonProperty(PropertyName = "version")]
+        public string FirmwareVersion { get; set; }
+
+        /// <summary>
+        /// Determine if the type code supplied applies to this object type
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool IsCorrectType()
+        {
+            return true;
+        }
+
+        /// <summary>
+        /// Determine if the model code supplied applies to this object type
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool IsCorrectModel()
+        {
+            return true;
+        }
     }
 }
